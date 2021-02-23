@@ -20,24 +20,17 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 //firestore
-// const devConfig = {
-//   apiKey: process.env.REACT_APP_API_KEY,
-//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-//   databaseURL: process.env.REACT_APP_DATABASE_URL,
-//   projectId: process.env.REACT_APP_PROJECT_ID,
-//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-//   appId: process.env.REACT_APP_ID,
-// };
-var firebaseConfig = {
-  apiKey: "AIzaSyCy83zX86F6snNsFxW9rgrq1yLyz3POE30",
-  authDomain: "jobsearch-3eb60.firebaseapp.com",
-  projectId: "jobsearch-3eb60",
-  storageBucket: "jobsearch-3eb60.appspot.com",
-  messagingSenderId: "325189075461",
-  appId: "1:325189075461:web:1373cec50a9d66e6cb526c"
-}; // const prodConfig = {};
-// const config = process.env.NODE_ENV === "development" ? devConfig : prodConfig;
+var devConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_ID
+};
+var prodConfig = {};
+var config = process.env.NODE_ENV === "development" ? devConfig : prodConfig;
 
 var Firebase =
 /*#__PURE__*/
@@ -46,7 +39,7 @@ function () {
     _classCallCheck(this, Firebase);
 
     //TODO: add initialize check :: if (firebase.apps.length === 0)
-    _app["default"].initializeApp(firebaseConfig);
+    _app["default"].initializeApp(config);
 
     console.log('firebase', _app["default"]);
     this.firebaseAuth = _app["default"].auth();
