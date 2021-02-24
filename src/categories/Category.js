@@ -5,17 +5,22 @@ import axios from 'axios'
 function Category() {
 
     const { slug } = useParams();
-    console.log(slug)
+    const [data, setData] = useState([])
 
-    useEffect(() => {
-        axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
-            .then((res) => console.log(res.data.jobs))
+    useEffect( async () => {
+       await axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
+            .then((res) =>{
+                console.log(res.data.jobs)
+                setData(res.data.jobs)
+            })
             .catch((err) => console.log(err))
     }, [])
+
 
     return (
         <div>
             category** {slug}
+            {data?.map((item) => <p>{item.title}</p>)}
         </div>
     )
 }
