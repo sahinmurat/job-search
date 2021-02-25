@@ -5,6 +5,7 @@ import Main from '../components/Main'
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import Category from "../categories/Category";
+import Detail from "../pages/Detail";
 
 function AppRouter() {
     console.log(process.env)
@@ -16,6 +17,7 @@ function AppRouter() {
                 <Route exact path='/login' component={Signin} />
                 <Route exact path='/register' component={Signup} />
                 <Route exact path='/category/:slug' component={Category} />
+                <Route exact path='/detail/:id' component={Detail} />
             </Switch>
             <Footer />
         </Router>
