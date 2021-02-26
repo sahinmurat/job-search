@@ -70,10 +70,10 @@ class Firebase {
     }
   }
 
-//   // logout signOut
-//   signOut() {
-//     this.firebaseAuth.signOut();
-//   }
+  // logout signOut
+  signOut() {
+    this.firebaseAuth.signOut();
+  }
 
 //   // forgot password sendPasswordResetEmail
 //   async forgotPassword(email) {

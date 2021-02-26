@@ -15,6 +15,8 @@ import Container from '@material-ui/core/Container';
 import firebase from '../firebase/Firebase.utils'
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useParams, useHistory } from 'react-router-dom'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signup() {
-
+    const history = useHistory();
+    const { slug } = useParams();
     const signupValidationSchema = Yup.object().shape({
         displayName: Yup.string().required("Display Name is required!!"),
         email: Yup.string().email("Invalid Email").required("Email is required!!"),
@@ -68,6 +71,7 @@ export default function Signup() {
 
     const handleGoogleButtonClick = () => {
         firebase.useGoogleProvider();
+        slug ? history.push(`/category/${slug}`) : history.push('/');
     };
 
     return (
@@ -104,7 +108,7 @@ export default function Signup() {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
+                        // autoFocus
                         // onChange = {formik.handleChange}
                         // value={formik.values.email}
                         {...formik.getFieldProps("email")}
