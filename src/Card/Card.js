@@ -51,7 +51,6 @@ export default function JobCard({ data }) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    //   onClick={() => history.push(`/detail/${item.slug}`)}     {params:'Hello World'}
     return (
         <Card className={classes.root} onClick={() => history.push(`/detail/${data.id}`, { params: { data } })} >
             <CardHeader

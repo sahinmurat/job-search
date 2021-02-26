@@ -7,8 +7,12 @@ import Signup from "../pages/Signup";
 import Category from "../categories/Category";
 import Detail from "../pages/Detail";
 
+import React, { useContext, useState } from 'react';
+import {FirebaseAuthContext} from '../context/AuthContext'
+
 function AppRouter() {
-    console.log(process.env)
+    const { currentUser } = useContext(FirebaseAuthContext);
+
     return (
         <Router>
             <Navbar />
@@ -16,7 +20,7 @@ function AppRouter() {
                 <Route exact path='/' component={Main} />
                 <Route exact path='/login' component={Signin} />
                 <Route exact path='/register' component={Signup} />
-                <Route exact path='/category/:slug' component={Category} />
+                <Route exact path='/category/:slug' component= {  currentUser ? Category : Signin }  />
                 <Route exact path='/detail/:id' component={Detail} />
             </Switch>
             <Footer />
