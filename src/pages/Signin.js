@@ -11,35 +11,13 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import firebase from '../firebase/Firebase.utils'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
-
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
-
+import useStyles from './SigninStyles'
 
 export default function Signin() {
     const history = useHistory();
@@ -60,8 +38,7 @@ export default function Signin() {
         validationSchema: signinValidationSchema,
         onSubmit: values => {
             firebase.signIn(values.email, values.password);
-            // slug ? history.push(`/category/${slug}`) : history.push('/');
-            // alert(JSON.stringify(values, null, 2));
+            slug ? history.push(`/category/${slug}`) : history.push('/');
         },
     });
 
@@ -137,7 +114,7 @@ export default function Signin() {
                         <Grid item xs>
                             <Link href="#" variant="body2">
                                 Forgot password?
-              </Link>
+                            </Link>
                         </Grid>
                         <Grid item>
                             <Link href="#" variant="body2">

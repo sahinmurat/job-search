@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -17,36 +16,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment'
 import { useHistory } from 'react-router-dom';
+import useStyles from './CardStyle'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 345,
-        cursor: 'pointer'
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: red[500],
-    },
-}));
 
 export default function JobCard({ data }) {
     const history = useHistory();
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-  
+
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -55,9 +32,10 @@ export default function JobCard({ data }) {
         <Card className={classes.root} onClick={() => history.push(`/detail/${data.id}`, { params: { data } })} >
             <CardHeader
                 avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-          </Avatar>
+                    // avatar style from the style componnt doesn't work, thats why inline style
+                    <Avatar aria-label="recipe" style={{ backgroundColor: ' #cc0000' }} >
+                        R 
+                    </Avatar>
                 }
                 title={data.title}
                 subheader={moment(data.publication_date).format("MMM Do YY")}

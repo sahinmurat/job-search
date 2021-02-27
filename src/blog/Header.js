@@ -18,10 +18,18 @@ const useStyles = makeStyles((theme) => ({
   toolbarSecondary: {
     justifyContent: 'space-between',
     overflowX: 'auto',
+  
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
+    transition: 'background 1s',
+    borderRadius:'10px',
+    "&:hover": {
+      background: "#ff9900",
+      borderRadius:'10px',
+
+    },
   },
 }));
 
@@ -32,7 +40,7 @@ function Header(props) {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Button size="small">Subscribe</Button>
+
         <Typography
           component="h2"
           variant="h5"
@@ -41,14 +49,9 @@ function Header(props) {
           noWrap
           className={classes.toolbarTitle}
         >
-          {title}
+          Branches
         </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
-        <Button variant="outlined" size="small">
-          Sign up
-        </Button>
+
       </Toolbar>
       <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {sections.map((section) => (
