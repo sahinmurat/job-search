@@ -2,27 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Card from '../Card/Card'
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-
-
-
+import useStyles from './CategoryStyle'
 
 function Category() {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            flexGrow: 1,
-        },
-        paper: {
-            padding: theme.spacing(2),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-        },
-    }));
-
-
     const classes = useStyles();
-
     const { slug } = useParams();
     const [data, setData] = useState([])
 
