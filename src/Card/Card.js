@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -9,14 +9,17 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment'
 import { useHistory } from 'react-router-dom';
 import useStyles from './CardStyle'
+import Modal from '../helper/Modal'
 
 
 export default function JobCard({ data }) {
@@ -24,27 +27,34 @@ export default function JobCard({ data }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
     return (
-        <Card className={classes.root} onClick={() => history.push(`/detail/${data.id}`, { params: { data } })} >
+        <Card className={classes.root} >
             <CardHeader
                 avatar={
                     // avatar style from the style componnt doesn't work, thats why inline style
-                    <Avatar aria-label="recipe" style={{ backgroundColor: ' #cc0000' }} >
-                        R 
+                    <Avatar  aria-label="recipe" style={{ backgroundColor: ' #cc0000' }} >
+                        R
                     </Avatar>
                 }
                 title={data.title}
                 subheader={moment(data.publication_date).format("MMM Do YY")}
             />
-            <CardMedia
+            <CardMedia onClick={() => history.push(`/detail/${data.id}`, { params: { data } })}
                 className={classes.media}
                 image="/static/images/cards/paella.jpg"
                 title="Paella dish"
             />
+            <div
+                className={classes.overlay2}
+                onClick={() => history.push(`/detail/${data.id}`, { params: { data } })}
+            >
+                <Button style={{ color: "black" }} size="small">
+                    <MoreHorizIcon fontSize="default" />
+                </Button>
+            </div>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     Company Name : {data.company_name}
@@ -52,10 +62,10 @@ export default function JobCard({ data }) {
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <Modal item={data} />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
+                    <ShareIcon  />
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {
