@@ -1,19 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export  default makeStyles((theme) => ({
+export default makeStyles((theme) => ({
     root: {
         maxWidth: 345,
-        cursor: 'pointer',
-        transition: 'background 1s',
-        borderRadius:'10px',
-        "&:hover": {
-          background: "#b3d1ff",
-          borderRadius:'10px',
+        borderRadius: '10px',
     },
-},
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+        cursor: 'pointer',
+        transition: 'background 1s',
+        "&:hover": {
+            background: "#b3d1ff",
+            borderRadius: '10px',
+        },
     },
     expand: {
         transform: 'rotate(0deg)',
