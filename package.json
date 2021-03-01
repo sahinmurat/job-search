@@ -9,7 +9,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
-    "bootstrap": "^4.6.0",
     "firebase": "^8.2.9",
     "formik": "^2.2.6",
     "markdown-to-jsx": "^7.1.1",
