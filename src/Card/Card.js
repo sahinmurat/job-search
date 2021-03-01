@@ -20,10 +20,13 @@ import moment from 'moment'
 import { useHistory } from 'react-router-dom';
 import useStyles from './CardStyle'
 import Modal from '../helper/Modal'
+import { useParams } from 'react-router-dom'
+
 
 
 export default function JobCard({ data }) {
     const history = useHistory();
+    const { savedjobs } = useParams();
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -60,7 +63,13 @@ export default function JobCard({ data }) {
                     Company Name : {data.company_name}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing>
+            { savedjobs ?
+                //TODO
+                // Button should be activ and remove the item from localstoroge
+                ( <Button variant="contained" color="secondary">
+            Remove from favorites
+          </Button>) : 
+          ( <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                     <Modal item={data} />
                 </IconButton>
@@ -77,7 +86,8 @@ export default function JobCard({ data }) {
                 >
                     <ExpandMoreIcon />
                 </IconButton>
-            </CardActions>
+            </CardActions>) }
+           
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Method:</Typography>

@@ -10,7 +10,7 @@ function Category() {
     const { slug } = useParams();
     const [data, setData] = useState([])
 
-    useEffect(async () => {
+    useEffect( async () => {
         await axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
             .then((res) => {
                 console.log(res.data.jobs)
@@ -18,7 +18,8 @@ function Category() {
             })
             .catch((err) => console.log(err))
     }, [])
-
+   
+    
 
     return (
         <Grid

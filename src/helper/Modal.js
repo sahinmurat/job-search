@@ -7,6 +7,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import CardActions from '@material-ui/core/CardActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +32,7 @@ const customStyles = {
 
 
 export default function App({item}) {
+    const history = useHistory();
     const classes = useStyles();
     var subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -60,8 +63,10 @@ export default function App({item}) {
     function closeModal() {
         setIsOpen(false);
     }
-// TODO
-// button sholuld be active
+
+    const goFavorit = () =>{
+        history.push('/savedjobs')
+    }
     return (
         <div className={classes.root}>
             <CardActions disableSpacing onClick={saveJob}>
@@ -77,10 +82,10 @@ export default function App({item}) {
                 contentLabel="Example Modal"
             >
                 <h2 ref={_subtitle => (subtitle = _subtitle)}>This job is added on your favorites</h2>
-                <Button variant="contained" color="primary">
+                <Button onClick={goFavorit} variant="contained" color="primary">
                     Go To Favorites
                 </Button>
-                <Button variant="contained" color="secondary">
+                <Button onClick={closeModal} variant="contained" color="secondary" >
                     Close
                 </Button>
             </Modal>
