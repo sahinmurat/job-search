@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -22,8 +22,6 @@ import useStyles from './CardStyle'
 import Modal from '../helper/Modal'
 import { useParams } from 'react-router-dom'
 
-
-
 export default function JobCard({ data }) {
     const history = useHistory();
     const { savedjobs } = useParams();
@@ -33,12 +31,24 @@ export default function JobCard({ data }) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const deleteJob = async () => {
+        let savedJobList = await localStorage.getItem('jobList');
+        savedJobList = savedJobList == null ? [] : JSON.parse(savedJobList)
+        const index = savedJobList.findIndex(x => x.id === data.id)
+        if (index > -1) {
+            savedJobList.splice(index, 1);
+            localStorage.setItem("jobList", JSON.stringify(savedJobList))
+            history.push('/savedjobs')
+        }
+    }
+
     return (
         <Card className={classes.root} >
             <CardHeader
                 avatar={
                     // avatar style from the style componnt doesn't work, thats why inline style
-                    <Avatar  aria-label="recipe" style={{ backgroundColor: ' #cc0000' }} >
+                    <Avatar aria-label="recipe" style={{ backgroundColor: ' #cc0000' }} >
                         R
                     </Avatar>
                 }
@@ -64,30 +74,29 @@ export default function JobCard({ data }) {
                 </Typography>
             </CardContent>
             { savedjobs ?
-                //TODO
-                // Button should be activ and remove the item from localstoroge
-                ( <Button variant="contained" color="secondary">
-            Remove from favorites
-          </Button>) : 
-          ( <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <Modal item={data} />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon  />
-                </IconButton>
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <ExpandMoreIcon />
-                </IconButton>
-            </CardActions>) }
-           
+                (<Button onClick={deleteJob} variant="contained" color="secondary" >
+                    Remove from favorites
+                </Button>
+                ) :
+                (<CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                        <Modal item={data} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                    <IconButton
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                        })}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                    >
+                        <ExpandMoreIcon />
+                    </IconButton>
+                </CardActions>)}
+
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>Method:</Typography>
