@@ -6,6 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import useStyles from './CategoryStyle'
 import ReactPaginate from 'react-paginate';
 import './pagination.css'
+import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+
 
 function Category() {
     const classes = useStyles();
@@ -15,7 +18,7 @@ function Category() {
     const [currentPage, setCurrentPage] = useState(0)
     const [pageCount, setPageCount] = useState('')
     const [postData, setPostdata] = useState('')
-
+    const history = useHistory();
     useEffect(async () => {
         await axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
             .then((res) => {
@@ -46,7 +49,11 @@ function Category() {
             container
             alignItems="stretch"
             spacing={3}
-        >
+        >  
+            <Button  onClick= {()=>  history.push('/savedjobs')}className={classes.button} variant="contained" >
+                Go Favorites
+            </Button>
+           
             {postData}
             <ReactPaginate
                 previousLabel={"prev"}

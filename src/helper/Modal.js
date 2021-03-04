@@ -8,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
+    button: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginRight:'15px'
+
+    }
 }));
 
 
@@ -31,7 +38,7 @@ const customStyles = {
 };
 
 
-export default function App({item}) {
+export default function App({ item }) {
     const history = useHistory();
     const classes = useStyles();
     var subtitle;
@@ -39,8 +46,8 @@ export default function App({item}) {
     console.log('item', item)
 
 
-// Here is very important! i add the items on localstorage and update.
-// because there is an array and i add the items on this array without losing anything on localstorage
+    // Here is very important! i add the items on localstorage and update.
+    // because there is an array and i add the items on this array without losing anything on localstorage
 
     const addJob = async () => {
         let savedJobList = await localStorage.getItem('jobList');
@@ -48,7 +55,7 @@ export default function App({item}) {
         const updatedJobList = [...savedJobList, item];
         localStorage.setItem("jobList", JSON.stringify(updatedJobList));
         console.log('lcl', localStorage.getItem('jobList'))
-    }   
+    }
 
     function saveJob() {
         setIsOpen(true);
@@ -64,15 +71,15 @@ export default function App({item}) {
         setIsOpen(false);
     }
 
-    const goFavorit = () =>{
+    const goFavorites = () => {
         history.push('/savedjobs')
     }
     return (
         <div className={classes.root}>
             <CardActions disableSpacing onClick={saveJob}>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
+                <Button variant="contained" size="small" color="primary" startIcon={<FavoriteTwoToneIcon />}>
+                    save
+                 </Button>
             </CardActions >
             <Modal
                 isOpen={modalIsOpen}
@@ -82,12 +89,12 @@ export default function App({item}) {
                 contentLabel="Example Modal"
             >
                 <h2 ref={_subtitle => (subtitle = _subtitle)}>This job is added on your favorites</h2>
-                <Button onClick={goFavorit} variant="contained" color="primary">
-                    Go To Favorites
-                </Button>
-                <Button onClick={closeModal} variant="contained" color="secondary" >
-                    Close
-                </Button>
+                    <Button classname={classes.button} onClick={goFavorites} variant="contained" color="primary">
+                        Go Favorites
+                    </Button>
+                    <Button onClick={closeModal} variant="contained" color="secondary" >
+                        Close
+                    </Button>
             </Modal>
         </div>
     );

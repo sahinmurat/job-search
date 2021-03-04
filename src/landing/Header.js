@@ -18,17 +18,22 @@ const useStyles = makeStyles((theme) => ({
   toolbarSecondary: {
     justifyContent: 'space-between',
     overflowX: 'auto',
-  
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
-    transition: 'background 1s',
+    transition: 'background 0.3s',
     borderRadius:'10px',
+    fontSize:'18px',
+    fontWeight:'600',
     "&:hover": {
-      background: "#ff9900",
+      background: "#f9790d",
       borderRadius:'10px',
-
+      color:'white',
+      fontSize:'18px',
+      fontWeight:'600',
+      borderBottom:'hidden',
+      textDecoration:'none'
     },
   },
 }));

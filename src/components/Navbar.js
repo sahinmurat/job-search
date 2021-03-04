@@ -41,15 +41,16 @@ export default function Navbar() {
   };
   return (
     <div className={classes.root}>
-      <FormGroup></FormGroup>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appbar}>
         <Toolbar className={classes.container}>
-          <img
-            className={classes.logo}
-            src={img}
-            alt="logo"
-            onClick={() => history.push("/")}
-          />
+          <div title='Home Page'>
+            <img
+              className={classes.logo}
+              src={img}
+              alt="logo"
+              onClick={() => history.push("/")}
+            />
+          </div>
           <Typography
             variant="h6"
             className={classes.title}
@@ -86,15 +87,14 @@ export default function Navbar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
               </Menu>
             </div>
           ) : (
               <>
-                <ButtonGroup disableElevation variant="contained" color="primary">
-                  <Button onClick={() => history.push("/login")}>Sign in</Button>
-                  <Button onClick={() => history.push("/register")}>Sign up</Button>
+                <ButtonGroup disableElevation variant="contained" >
+                  <Button className={classes.buttongroup} onClick={() => history.push("/login")}>Sign in</Button>
+                  <Button className={classes.buttongroup} onClick={() => history.push("/register")}>Sign up</Button>
                 </ButtonGroup>
               </>
             )}
