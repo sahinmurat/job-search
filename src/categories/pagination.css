@@ -5,23 +5,23 @@
     outline: none;
   }
   .pagination > .active > a{
-    background-color: #3f51b5 ;
-    border-color: #3f51b5;
+    background-color: #f9790d ;
+    border-color: #f9790d;
     color: #fff;
   }
   .pagination > li > a{
-    border: 1px solid #3f51b5 ;
+    border: 1px solid #f9790d ;
     padding: 5px 10px;
     outline: none;
     cursor: pointer;
   }
   .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background-color: #3f51b5;
-    border-color: #3f51b5;
+    background-color: #f9790d;
+    border-color: #f9790d;
     outline: none ;
   }
   .pagination > li > a, .pagination > li > span{
-    color:#3f51b5
+    color:#f9790d
   }
   .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
     border-radius: unset

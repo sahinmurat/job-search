@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import axios from 'axios'
-import Blog from '../blog/Blog'
+import Landing from '../landing/Landing';
 
 function Main() {
-    useEffect(() => {
-        axios.get('https://remotive.io/api/remote-jobs?category=design')
-            .then((res) => console.log(res.data.jobs))
-            .catch((err) => console.log(err))
-    }, [])
-    return (
+       return (
         <div>
-            <Blog />
+            <Landing />
         </div>
     )
 }

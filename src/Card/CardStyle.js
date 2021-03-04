@@ -4,7 +4,19 @@ export default makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         borderRadius: '10px',
+        border:'1px solid #ff4000'
     },
+   header:{
+       display:'flex',
+       alignItems:'center',
+       
+       margin:'5px'
+   },
+   header_right:{
+       marginLeft:'10px',
+       alignItems:'center',
+   },
+
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -26,6 +38,28 @@ export default makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: 'red'[500],
+        backgroundColor: '#f9790d',
     },
+    detail:{
+        display:'flex',    
+        margin:'20px'    
+    },
+    detailIcon:{
+        display:'flex',
+        marginTop:'10px',
+        marginRight:'10px'
+    },
+    detailP:{
+        display:'flex'
+    },
+    delete:{
+        // backgroundColor:'#f9790d',
+        margin:'10px 50px',
+        // color:'white',
+        fontSize:'15px'
+    },
+    category:{
+        textAlign:'center',
+        fontSize:'15px'
+    }
 }));

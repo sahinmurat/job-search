@@ -11,7 +11,6 @@ import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
@@ -36,32 +35,33 @@ const sections = [
 ];
 
 const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
+  title: "Want to find your dream job?",
+  description: " 1,611  jobs from 996 companies..",
   imageText: 'main image description',
   linkText: 'Continue reading…',
 };
 
 const featuredPosts = [
   {
-    title: 'Featured post',
-    date: 'Nov 12',
+    title: "Career Transition: 5 Important Resume Tips",
+    date: "Nov 12",
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
+      "To best sell yourself to any employer, a strong, relevant resume is key. Luckily, you have a few different options. ",
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdW1lfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    imageText: "Image Text",
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: "Interviewing Authentically",
+    date: "Nov 11",
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
+      "The goal of the interview is to showcase your accomplishments while developing a relationship with the hiring manager.",
+    image:
+      "https://images.unsplash.com/photo-1459499362902-55a20553e082?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8am9iJTIwaW50ZXJ2aWV3fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    imageText: "Image Text",
   },
 ];
+
 
 const posts = [post1, post2, post3];
 
@@ -89,7 +89,7 @@ const sidebar = {
   ],
 };
 
-export default function Blog() {
+export default function Landing() {
   const classes = useStyles();
 
   return (
@@ -115,10 +115,6 @@ export default function Blog() {
           </Grid>
         </main>
       </Container>
-      <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
-      />
     </React.Fragment>
   );
 }
