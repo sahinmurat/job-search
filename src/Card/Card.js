@@ -17,10 +17,8 @@ import { useHistory } from 'react-router-dom';
 import useStyles from './CardStyle'
 import Modal from '../helper/Modal'
 import { useParams } from 'react-router-dom'
-import ScheduleTwoToneIcon from '@material-ui/icons/ScheduleTwoTone';
 import AccountBalanceTwoToneIcon from '@material-ui/icons/AccountBalanceTwoTone';
 import AvTimerTwoToneIcon from '@material-ui/icons/AvTimerTwoTone';
-import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import CategoryTwoToneIcon from '@material-ui/icons/CategoryTwoTone';
 
 export default function JobCard({ data }) {
@@ -44,14 +42,14 @@ export default function JobCard({ data }) {
             history.push('/savedjobs')
         }
     }
-    console.log(data)
+
     return (
         <Card className={classes.root} >
             <div className={classes.header}>
                 <Avatar aria-label="recipe" style={{ backgroundColor: '#f9790d' }} >
                     {firstLetter}
                 </Avatar>
-                <div  className={classes.header_right}>
+                <div className={classes.header_right}>
                     <h2>{data.title}</h2>
                     <p>{moment(data.publication_date).format("MMM Do YY")}</p>
                 </div>
@@ -72,7 +70,6 @@ export default function JobCard({ data }) {
                     <Button className={classes.delete} onClick={deleteJob} color="secondary" variant="contained" >
                         Remove from favorites
                     </Button>
-
                 ) :
                 (<CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">

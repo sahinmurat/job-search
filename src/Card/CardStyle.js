@@ -53,9 +53,7 @@ export default makeStyles((theme) => ({
         display:'flex'
     },
     delete:{
-        // backgroundColor:'#f9790d',
         margin:'10px 50px',
-        // color:'white',
         fontSize:'15px'
     },
     category:{
