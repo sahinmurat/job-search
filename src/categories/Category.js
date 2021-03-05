@@ -19,8 +19,8 @@ function Category() {
     const [pageCount, setPageCount] = useState('')
     const [postData, setPostdata] = useState('')
     const history = useHistory();
-    useEffect(async () => {
-        await axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
+    useEffect( () => {
+         axios.get(`https://remotive.io/api/remote-jobs?category=${slug}`)
             .then((res) => {
                 const data = res.data.jobs
                 const slice = data.slice(offset, offset + perPage)
