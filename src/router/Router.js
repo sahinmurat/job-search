@@ -6,7 +6,7 @@ import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import Category from "../categories/Category";
 import Detail from "../pages/Detail";
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FirebaseAuthContext } from '../context/AuthContext'
 import SavedJob from "../savedJob/SavedJob";
 
